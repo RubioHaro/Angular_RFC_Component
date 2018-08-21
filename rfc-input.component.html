@@ -1,0 +1,21 @@
+<div class="input-group">
+  <input required type="text" minlength="{{minlength}}" maxlength="{{maxlength}}" name="rfc" [(ngModel)]="RFC" #rfc="ngModel"
+    class="form-control" id="rfc" autocomplete="rfc" placeholder="{{msg_ph_suppl_RFC}}" pattern="^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))((-)?([A-Z\d]{3}))?$" (ngModelChange)="UpdateRFC($event)">
+</div>
+<div *ngIf="rfc.invalid && (rfc.dirty || rfc.touched)" class="font-weight-bold kg-input-error-msj">
+  <div class="small-text">
+    <div *ngIf="rfc.errors.required">
+      Es necesario que ingreses el RFC
+    </div>
+    <div *ngIf="rfc.errors.minlength">
+      {{msg_min_err_suppl_RFC}}
+    </div>
+    <div *ngIf="rfc.errors.pattern">
+      {{msg_ptrn_err_suppl_RFC}}
+    </div>
+    <div *ngIf="rfc.errors.maxlength">
+      {{msg_max_err_suppl_RFC}}
+    </div>
+  </div>
+</div>
+<small id="RFCHelp" class="form-text white-text">Posteriormente se validarar el RFC con el SAT</small>
